@@ -8,41 +8,20 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      // Ye line Backend (Port 5000) se connect karegi
-      const response = await axios.post("http://localhost:5000/signup", {
-        email,
-        password,
-      });
-      alert(response.data); // "Signup successful ✅" show hoga
-    } catch (error) {
-      console.error("Error signing up:", error);
-    }
+      const res = await axios.post("http://localhost:5000/signup", { email, password });
+      alert("Welcome to Pehnawa! ✅");
+    } catch (err) { alert("Signup Failed ❌"); }
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px", fontFamily: "serif" }}>
-      <h2 style={{ color: "#8b6d31", letterSpacing: "2px" }}>JOIN PEHNAWA</h2>
+    <div style={{ textAlign: "center", padding: "100px 20px" }}>
+      <h2 style={{ letterSpacing: "3px" }}>CREATE ACCOUNT</h2>
       <form onSubmit={handleSignup}>
-        <input 
-          type="email" 
-          placeholder="Email Address" 
-          onChange={(e) => setEmail(e.target.value)} 
-          style={{ padding: "10px", margin: "10px", width: "250px" }}
-        />
-        <br />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          onChange={(e) => setPassword(e.target.value)} 
-          style={{ padding: "10px", margin: "10px", width: "250px" }}
-        />
-        <br />
-        <button type="submit" style={{ padding: "10px 30px", background: "#1a1a1a", color: "white", border: "none", cursor: "pointer" }}>
-          CREATE ACCOUNT
-        </button>
+        <input type="email" placeholder="EMAIL" onChange={(e) => setEmail(e.target.value)} required /><br/>
+        <input type="password" placeholder="PASSWORD" onChange={(e) => setPassword(e.target.value)} required /><br/>
+        <button type="submit">JOIN NOW</button>
       </form>
     </div>
   );
 }
-
 export default Signup;
