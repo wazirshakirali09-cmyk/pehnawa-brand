@@ -14,6 +14,10 @@ function Cards() {
     }
   ];
 
+  const handleAddToCart = (product) => {
+    alert(`${product.name} added to cart 🛒`);
+  };
+
   return (
     <div
       style={{
@@ -31,7 +35,9 @@ function Cards() {
             textAlign: "center",
             border: "1px solid #eee",
             padding: "15px",
-            borderRadius: "12px"
+            borderRadius: "12px",
+            transition: "0.3s",
+            cursor: "pointer"
           }}
         >
           <img
@@ -43,18 +49,27 @@ function Cards() {
             }}
           />
 
-          <h3
-            style={{
-              fontSize: "16px",
-              marginTop: "10px"
-            }}
-          >
+          <h3 style={{ fontSize: "16px", marginTop: "10px" }}>
             {item.name}
           </h3>
 
           <p style={{ color: "#8b6d31" }}>
             {item.price}
           </p>
+
+          <button
+            onClick={() => handleAddToCart(item)}
+            style={{
+              marginTop: "10px",
+              padding: "10px 20px",
+              border: "1px solid #8b6d31",
+              background: "#1a1a1a",
+              color: "#fff",
+              cursor: "pointer"
+            }}
+          >
+            Add to Cart
+          </button>
         </div>
       ))}
     </div>
