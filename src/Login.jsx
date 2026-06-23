@@ -5,38 +5,47 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    const res = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    alert(data.message);
+      alert(data.message);
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
+    } catch (error) {
+      alert("Server Error ❌");
+      console.log(error);
     }
   };
 
   const getProfile = async () => {
-    const token = localStorage.getItem("token");
+    try {
+      const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:5000/profile", {
-      headers: {
-        Authorization: token,
-      },
-    });
+      const res = await fetch("http://localhost:5000/profile", {
+        headers: {
+          Authorization: token,
+        },
+      });
 
-    const data = await res.text();
-    alert(data);
+      const data = await res.text();
+      alert(data);
+    } catch (error) {
+      alert("Profile fetch failed ❌");
+    }
   };
 
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div style={{ marginTop: "50px", textAlign: "center" }}>
       <h2>Login</h2>
 
       <input
@@ -55,6 +64,7 @@ function Login() {
 
       <button onClick={handleLogin}>Login</button>
       <br /><br />
+
       <button onClick={getProfile}>Get Profile</button>
     </div>
   );
