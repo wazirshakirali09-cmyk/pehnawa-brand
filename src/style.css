@@ -1,7 +1,79 @@
-body { margin: 0; font-family: 'Playfair Display', serif; background-color: #ffffff; color: #1a1a1a; }
-.hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fdfdfd; text-align: center; }
-.hero h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; color: #1a1a1a; }
-.hero p { font-size: 1.2rem; color: #8b6d31; font-style: italic; }
-button { padding: 12px 30px; border: 1px solid #8b6d31; background: #1a1a1a; color: white; cursor: pointer; transition: 0.3s; letter-spacing: 1px; }
-button:hover { background: #8b6d31; color: white; }
-input { padding: 12px; margin: 10px; border: 1px solid #ddd; width: 300px; outline: none; }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+/* HERO */
+.hero {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #fdfdfd;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #8b6d31;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 30px;
+  border: 1px solid #8b6d31;
+  background: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background: #8b6d31;
+  color: white;
+  transform: scale(1.03);
+}
+
+/* INPUT */
+input {
+  padding: 12px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  width: 300px;
+  outline: none;
+}
+
+/* CARDS (missing improvement) */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
